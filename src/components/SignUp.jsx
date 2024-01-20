@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "reactreact-router-dom";
 
 function SignUp() {
     const [Name, setName] = useState("");
