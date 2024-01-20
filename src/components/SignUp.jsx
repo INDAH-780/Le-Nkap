@@ -1,6 +1,13 @@
 import React from 'react'
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { validateEmail } from './utils';
+
+const PasswordErrorMessage = () => {
+  return (
+    <p className="FieldError">Password should have at least 8 characters</p>
+  );
+};
 
 function SignUp() {
     const [Name, setName] = useState("");
@@ -15,7 +22,7 @@ function SignUp() {
     const getIsFormValid = () => {
       return (
         Name &&
-        email &&
+        validateEmail(email) &&
         password.value.lengthrole 
       );
     };
@@ -47,7 +54,7 @@ function SignUp() {
             className='input'
               value={Name}
               onChange={(e) => {
-                setFirstName(e.target.value);
+                setName(e.target.value);
               }}
               placeholder=" name"
             />
