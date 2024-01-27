@@ -4,6 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Expense from './components/Expense';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
             <Login />
           </Route>
           <Route path="/signup" exact>
-            <SignUp />
+            <Expense />
           </Route>
         </Switch>
       </Router>
