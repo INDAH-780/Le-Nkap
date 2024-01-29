@@ -4,7 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Expense from './components/Expense';
+import Expense from './components/Transactions/Expense';
 
 function App() {
 
