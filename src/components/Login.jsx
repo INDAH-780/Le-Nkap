@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+
 function Login() {
     const [input, setInput] = useState({
       Email: "",
@@ -47,9 +48,11 @@ function Login() {
             onChange={handleInput}
           />
 
-          <button>Signin</button>
+          <button className='buton'>Signin</button>
           <h3>
-            Don't have an account ? <Link to="/signup">Register Now</Link>
+            Don't have an account ? 
+            <Link to="/signup">
+            Register Now</Link>
           </h3>
         </div>
       </form>

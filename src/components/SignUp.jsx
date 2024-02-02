@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { validateEmail } from "./utils";
+import './Register.css';
 
 const PasswordErrorMessage = () => {
   return (
@@ -80,7 +81,7 @@ function SignUp() {
           ) : null}
         </div>
 
-        <button type="submit" disabled={!getIsFormValid()}>
+        <button type="submit" disabled={!getIsFormValid()} className="buton">
           Create account
         </button>
 

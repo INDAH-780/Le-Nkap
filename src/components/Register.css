@@ -1,4 +1,9 @@
-/*.mainContainer{
+*{
+  justify-content: center;
+align-items: center;
+
+}
+.mainContainer{
     display: flex;
   align-items: center;
   flex-direction: column;
@@ -69,7 +74,7 @@ h3{
     border-radius: 2rem;
    } 
 }
-button{
+.buton{
     margin: 1rem 0 2rem 0;
     margin-left: 50px;
     
@@ -88,4 +93,4 @@ button{
 }
 
 fieldset { display: none; }
-*/
+

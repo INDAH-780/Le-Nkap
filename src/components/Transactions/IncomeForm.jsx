@@ -1,18 +1,18 @@
 import React, { useRef } from "react";
 
-function ExpenseForm({ expense, setExpense }) {
+function IncomeForm({ income, setIncome }) {
   const desc = useRef(null);
   const date = useRef(null);
   const price = useRef(null);
 
-  const AddExpense = (e) => {
+  const AddIncome = (e) => {
     e.preventDefault();
 
     let d = date.current.value.split("-");
     let newD = new Date(d[0], d[1] - 1, d[2]);
 
-    setExpense([
-      ...expense,
+    setIncome([
+      ...income,
       {
         desc: desc.current.value,
         price: price.current.value,
@@ -26,13 +26,13 @@ function ExpenseForm({ expense, setExpense }) {
   };
 
   return (
-    <form className="income-form" onSubmit={AddExpense}>
+    <form className="income-form" onSubmit={AddIncome}>
       <div className="form-inner">
         <input
           type="text"
           name="desc"
           id="desc"
-          placeholder="My Expense..."
+          placeholder="Your income..."
           ref={desc}
         />
         <input
@@ -55,4 +55,4 @@ function ExpenseForm({ expense, setExpense }) {
   );
 }
 
-export default ExpenseForm;
+export default IncomeForm;
