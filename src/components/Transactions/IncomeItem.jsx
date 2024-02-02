@@ -14,7 +14,7 @@ function IncomeItem({ income, index, removeIncome }) {
   return (
     <div className="income-item">
       <div className="desc">{income.desc}</div>
-      <div className="price">{income.price}FCFA</div>
+      <div className="price">Total Income {income.price}FCFA</div>
       <div className="date">{day + "/" + month + "/" + year}</div>
       <button className="remove-item" onClick={() => removeHandle(index)}>
         Delete
