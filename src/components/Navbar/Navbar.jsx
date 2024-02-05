@@ -19,16 +19,7 @@ function Navbar() {
               <Link to="./signup">SignUp</Link>
             </button>
           </li>
-          <li>
-            <button className="design">
-              <Link to="./income">Income</Link>
-            </button>
-          </li>
-          <li>
-            <button className="design">
-              <Link to="./expense">Expense</Link>
-            </button>
-          </li>
+          
         </ul>
       </div>
       <div className="container">
