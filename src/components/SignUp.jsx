@@ -81,8 +81,9 @@ function SignUp() {
           ) : null}
         </div>
 
-        <button type="submit" disabled={!getIsFormValid()} className="buton">
-          Create account
+        <button type="submit" disabled={!getIsFormValid()} className="buton"><Link to="/dash">
+         Create account 
+        </Link> 
         </button>
 
         <h5>

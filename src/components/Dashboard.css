@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-family: 'Nunito';
+    color: rgb(2, 2, 30);
+
+   
+}
+.header{
+   display:flex;
+    align-items: center;
+   justify-content: space-between;
+    background: #d7d3d3;
+    padding: 5px 4%;
+    width: 100vw;
+    height: 10vh;
+    
+
+}
+.butt{
+    margin-left: 50px;
+    background-color: rgb(163, 163, 188);
+    letter-spacing: 0.2rem;
+    width:70px;
+    height: 2rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
