@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import './Register.css';
 
  function SignUp() {
-   const navigate = useNavigate();
+   
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [Phone, setPhone] = useState("");
