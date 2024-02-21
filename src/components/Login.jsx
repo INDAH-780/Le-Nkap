@@ -11,6 +11,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [post, setPost] = React.useState(null);
   const baseURL = "https://le-nkap-v1.onrender.com/docs/#/default/loginUser";
 
 
@@ -19,10 +20,7 @@ function Login() {
     axios
       .get("https://le-nkap-v1.onrender.com/docs/#/default/getLoggedInUser")
       .then((response) => {
-        
-        {
-          navigate("/dashboard");
-        }
+        setPost(response.data);
       });
   }, []);
    
@@ -47,8 +45,9 @@ function Login() {
       /* A Promise is a proxy for a value not necessarily known when the promise is created*/
       .then((r) => {
         setIsSubmitting(true);
+        setPost(response.data);
         
-        navigate("/dashboard");
+       /* navigate("/dashboard");*/
       })
       .catch((e) => {
         setIsSubmitting(false);

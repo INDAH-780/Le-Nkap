@@ -14,16 +14,16 @@ import './Register.css';
    const [confirmPassword, setConfirmPassword] = useState("");
    const [validationErrors, setValidationErrors] = useState({});
    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [post, setPost] = React.useState(null);
   
 
    useEffect(() => {
     axios
       .get("https://le-nkap-v1.onrender.com/docs/#/default/getLoggedInUser")
       .then((response) => {
+        setPost(response.data);
        
-        {
-          navigate("/dashboard");
-        }
+    
       });
   }, []);
    
@@ -46,9 +46,7 @@ import './Register.css';
        )
        .then((r) => {
          setIsSubmitting(true);
-
-         /*localStorage.setItem("/users", r.data.token);*/
-         navigate("/dashboard");
+         setPost(response.data);
        })
        .catch((e) => {
          setIsSubmitting(false);
