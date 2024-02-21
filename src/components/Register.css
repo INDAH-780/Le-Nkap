@@ -7,13 +7,14 @@ align-items: center;
     display: flex;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
+  height: 90vh;
   width: 30vw;
   background: rgba(255, 255, 255,  0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
   border-radius: 10px;
   color: #ffffff;
+  margin-top: 50px;
   
   
   
@@ -58,7 +59,7 @@ h3{
    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
    border-radius: 2rem;
    width: 80%;
-   height: 3rem;
+   height: 2rem;
    padding: 1rem;
    outline: none;
    border: none;
@@ -85,7 +86,7 @@ h3{
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     width: 65%;
-    height: 3rem;
+    height: 2.5rem;
     border: none;
     border-radius: 2rem;
     color: #fff;
@@ -93,4 +94,12 @@ h3{
 }
 
 fieldset { display: none; }
-
+.form-label{
+  margin-left: 50px;
+}
+.text-danger{
+  color: rgb(195, 6, 6);
+}
+p{
+  font-size: 2rem;
+}

@@ -32,7 +32,7 @@ function App() {
           <Route path="/expense">
             <Expense />
           </Route>
-          <Route path="/dash">
+          <Route path="/dashboard">
             <Dashboard />
           
           </Route>
