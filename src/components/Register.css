@@ -99,6 +99,7 @@ fieldset { display: none; }
 }
 .text-danger{
   color: rgb(195, 6, 6);
+  margin-left: 50px;
 }
 p{
   font-size: 2rem;

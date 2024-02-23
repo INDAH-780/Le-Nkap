@@ -2,170 +2,158 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import validation from "./validation";
 
 import './Register.css';
+import utils from "./utils";
 
- function SignUp() {
+
+ function SignUp({submitForm}) {
    
-   const [name, setName] = useState("");
-   const [email, setEmail] = useState("");
-   const [Phone, setPhone] = useState("");
-   const [password, setPassword] = useState("");
-   const [confirmPassword, setConfirmPassword] = useState("");
-   const [validationErrors, setValidationErrors] = useState({});
-   const [isSubmitting, setIsSubmitting] = useState(false);
-    const [post, setPost] = React.useState(null);
-  
 
-   useEffect(() => {
+  const [values, setValues] = useState({
+    fullname: "",
+    email: "",
+    number: "",
+    password: "",
+    confirm_password: ""
+  })
+  const handleChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]:event.target.value,
+    })
+  };
+  const handleformSubmit = (event) => {
+    event.preventDefault();
+    setErrors(validation(values));
+    setDataIsCorrect(true);
+    let payload = {
+      fullname: "",
+      email: "",
+      number: "",
+      password: "",
+      confirm_password: "",
+    };
     axios
-      .get("https://le-nkap-v1.onrender.com/docs/#/default/getLoggedInUser")
+      .post(
+        "https://le-nkap-v1.onrender.com/docs/#/default/registerUser",
+        payload
+      )
+      .then((r) => {
+        setDataIsCorrect(true);
+        setValues(response.data);
+      })
+      
+     setValues(values);
+     
+     console.log(values);
+
+  }
+
+  const [errors, setErrors] = useState({});
+  const [dataIsCorrect, setDataIsCorrect] = useState(false);
+  const [data, setData] = useState ("");
+
+  useEffect(() => {
+    if(Object.keys(errors).length === 0 && dataIsCorrect){
+      submitForm(true);
+      
+    }
+
+  }, [errors]);
+  React.useEffect(() => {
+    axios
+      .get(
+        `${"https://le-nkap-v1.onrender.com/docs/#/default/getLoggedInUser"}`
+      )
       .then((response) => {
-        setPost(response.data);
-       
-    
+        setValues(response.data);
       });
   }, []);
-   
+
+  
+
+
+  useEffect(() => {
+    if (setValues) {
      
+    }
+  }, [setValues]); 
 
-   const registerAction = (e) => {
-     e.preventDefault();
-     setIsSubmitting(true);
-     let payload = {
-       name: name,
-       email: email,
-       phone: Phone,
-       password: password,
-       password_confirmation: confirmPassword,
-     };
-     axios
-       .post(
-         "https://le-nkap-v1.onrender.com/docs/#/default/registerUser",
-         payload
-       )
-       .then((r) => {
-         setIsSubmitting(true);
-         setPost(response.data);
-       })
-       .catch((e) => {
-         setIsSubmitting(false);
-         if (e.response.errors != undefined) {
-           setValidationErrors(e.response.errors);
-         }
-       });
-       
-   };
 
-   return (
-     <div className="mainContainer">
-       <form onSubmit={(e) => registerAction(e)}>
-         <div className="field">
-           <label htmlFor="name" className="form-label">
-             Name
-           </label>
-           <input
-             type="text"
-             className="input"
-             id="name"
-             name="name"
-             value={name}
-             onChange={(e) => {
-               setName(e.target.value);
-             }}
-           />
-           {validationErrors.name != undefined && (
-             <div className="">
-               <small className="text-danger">{validationErrors.name[0]}</small>
-             </div>
-           )}
-         </div>
-         <div className="field">
-           <label htmlFor="email" className="form-label">
-             Email address
-           </label>
-           <input
-             type="email"
-             className="input"
-             id="email"
-             name="email"
-             value={email}
-             onChange={(e) => {
-               setEmail(e.target.value);
-             }}
-           />
-           {validationErrors.email != undefined && (
-             <div className="flex flex-col">
-               <small className="text-danger">
-                 {validationErrors.email[0]}
-               </small>
-             </div>
-           )}
-         </div>
-         <div className="field">
-           <label htmlFor="phone" className="form-label">
-             Phone
-           </label>
-           <input
-             type="phone"
-             className="input"
-             id="phone"
-             name="phone"
-             value={Phone}
-             onChange={(e) => setPhone(e.target.value)}
-           />
-           {validationErrors.password != undefined && (
-             <div>
-               <small className="text-danger">
-                 {validationErrors.phone[0]}
-               </small>
-             </div>
-           )}
-         </div>
-         <div className="field">
-           <label htmlFor="password" className="form-label">
-             Password
-           </label>
-           <input
-             type="password"
-             className="input"
-             id="password"
-             name="password"
-             value={password}
-             onChange={(e) => setPassword(e.target.value)}
-           />
-           {validationErrors.password != undefined && (
-             <div>
-               <small className="text-danger">
-                 {validationErrors.password[0]}
-               </small>
-             </div>
-           )}
-         </div>
-         <div className="field">
-           <label htmlFor="confirm_password" className="form-label">
-             Confirm Password
-           </label>
-           <input
-             type="password"
-             className="input"
-             id="confirm_password"
-             name="confirm_password"
-             value={confirmPassword}
-             onChange={(e) => setConfirmPassword(e.target.value)}
-           />
-         </div>
-         <div className="">
-           <button disabled={isSubmitting} type="submit" className="buton">
-             Register Now
-           </button>
-           <p>
-             Have already an account <Link to="/login">Login here</Link>
-           </p>
-         </div>
-       </form>
-     </div>
-   );
- }
+
+
+  
+  return (
+    <div className="mainContainer">
+      <form className="" >
+        <div className="field">
+          <label>Full Name</label>
+          <input
+            className="input"
+            type="text"
+            name="fullname"
+            value={values.fullname}
+            onChange={handleChange}
+          />
+          {errors.fullname && <p className="error">{errors.fullname}</p>}
+        </div>
+        <div className="field">
+          <label>Email</label>
+          <input
+            className="input"
+            type="email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="error">{errors.email}</p>}
+        </div>
+        <div className="field">
+          <label>Number</label>
+          <input
+            className="input"
+            type="number"
+            name="number"
+            value={values.number}
+            onChange={handleChange}
+          />
+          {errors.number && <p className="error">{errors.number}</p>}
+        </div>
+        <div className="field">
+          <label>Password</label>
+          <input
+            className="input"
+            type="password"
+            name="password"
+            value={values.password}
+            onChange={handleChange}
+          />
+          {errors.password && <p className="error">{errors.password}</p>}
+        </div>
+        <div className="field">
+          <label>Confirm Password</label>
+          <input
+            className="input"
+            type="confirm_password"
+            name="confirm_password"
+            value={values.confirm_password}
+            onChange={handleChange}
+          />
+          {errors.confirm_password && <p className="error">{errors.confirm_password}</p>}
+        </div>
+        <div>
+          <button className="buton" onClick={handleformSubmit}>
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+  }
+  
+
+ 
    
 export default SignUp;
