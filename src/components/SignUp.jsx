@@ -1,14 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import axios from "axios";
 import validation from "./validation";
 
 import './Register.css';
-import utils from "./utils";
 
 
- function SignUp({submitForm}) {
+
+ //function SignUp({submitForm}) {
+  const SignUp = ({ submitForm }) => {
    
 
   const [values, setValues] = useState({
